@@ -1,7 +1,7 @@
 import React from 'react'
 import ContentLoader from 'react-content-loader'
 
-export const LoaderCatalog = (props) => {
+ const LoaderCatalog = (props) => {
   return (
     <ContentLoader 
       viewBox="0 0 1360 900" 
@@ -50,3 +50,5 @@ export const LoaderCatalog = (props) => {
     </ContentLoader>
   )
 }
+
+export default LoaderCatalog

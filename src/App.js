@@ -3,7 +3,7 @@ import { ThemeProvider } from '@mui/material';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { theme } from './utils/';
 import { Routes } from './routes';
-import { LoaderCatalog } from './components/molecules';
+import { LoaderCatalog } from './components';
 const Layout = React.lazy(() => import('./Layout'));
 
 
