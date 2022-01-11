@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     root: {
         borderRadius: 18,
         backgroundColor:'#fff',
-        minHeight:180
+        minHeight:230
     },
   });
 
@@ -28,22 +28,23 @@ export default function CardPost({user, post}) {
     <Box className={classes.root}>
     <Link to="">
       <CardContent>
-          <Typography gutterBottom sx={{fontWeight:'fontWeightBold'}}  variant="h5"  color="text.primary" component="div">
+          <Typography gutterBottom sx={{fontWeight:'fontWeightBold'}}  variant="h4"  component="div">
             {post.title}
           </Typography>
           
         
-        <Typography variant="body2" sx={{maxHeight:'50px', minHeight:'50px', overflow:'hidden'}} color="text.secondary">{post.body}</Typography>
+        <Typography variant="body2" sx={{maxHeight:'50px', minHeight:'50px', overflow:'hidden'}} >{post.body}</Typography>
         </CardContent>
           <Box sx={{
             paddingLeft:2,
             paddingRight: 2,
             paddingBottom: 2,
             display: 'flex',
-            justifyContent:'space-between',
-            alignItems:'center'
-      }}>
-        <Typography variant="span" sx={{ fontWeight: 'fontWeightBold' }}>dmsm</Typography>
+            flexDirection:'column'
+        }}>
+          
+          <Typography variant="span" sx={{ fontWeight: 'fontWeightBold' }}>post by {user.name}</Typography>
+          <Typography variant="h5" sx={{ fontWeight: 'fontWeightBold' }}>{user.company.name}</Typography>
         <Box>
         </Box>
       </Box>

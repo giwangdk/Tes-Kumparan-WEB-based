@@ -23,7 +23,7 @@ export const theme = createTheme({
         color:'#14274E',
       },
       h3 : {
-        fontSize: 25,
+        fontSize: 28,
         color: '#394867',
         fontWeight:600
       },
@@ -32,16 +32,16 @@ export const theme = createTheme({
         color: '#14274E',
       },
       h5 : {
-        fontSize: 15,
+        fontSize: 16,
         color: '#394867',
       },
       body2 : {
-        fontSize: 12,
-        color:'#9BA4B4',
+        fontSize: 13,
+        color:'#394867',
       },
       span : {
-        fontSize: 10,
-        color:'#9BA4B4',
+        fontSize: 12,
+        color:'#394867',
       }
     },
   });
