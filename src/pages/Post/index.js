@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom';
-import {Link} from '../../components'
+import {Link, CardComment} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
 import { getUserByIdAsync, getPostByIdAsync, getDetailPostByid } from '../../utils/globalFunc';
 import Box from '@mui/material/Box'
@@ -30,31 +30,40 @@ function Post() {
     return (
         <Box>
             <Container>
-            <CardContent>
+          <Box>
           <Typography gutterBottom sx={{fontWeight:'fontWeightBold'}}  variant="h1"  component="div">
             {items?.post.post?.title}
-          </Typography>
-          
-        
-        <Typography variant="body1" >{items?.post.post?.body}</Typography>
-        </CardContent>
-          <Box sx={{
-            paddingLeft:2,
-            paddingRight: 2,
-            paddingBottom: 2,
-            display: 'flex',
-            flexDirection:'column'
+            </Typography>
+            
+        <Box sx={{
+              display: 'flex',
+          width:'100%',
+            flexDirection:'column',
+              justfiyContent: 'space-between',
+              marginBottom:3
         }}>
           
-          <Link to={`/user/${items.post.user.id}`}>
+          <Link to={`/user/${items?.post?.user?.id}`}>
                         post by
-            <Typography variant="h3" sx={{ fontWeight: 'fontWeightBold',  textDecoration:'underline' }}>{items?.post.user?.name}</Typography>
+            <Typography variant="h5" sx={{ fontWeight: 'fontWeightBold',  textDecoration:'underline' }}>{items?.post.user?.name}</Typography>
           </Link>
           <Typography variant="h5" sx={{
             fontWeight: 'fontWeightBold'
           }}>{items?.post.user?.company?.name}</Typography>
       </Box>
-
+          
+        
+        <Typography variant="body1" >{items?.post?.post?.body}</Typography>
+          </Box>
+          
+          <Box>
+            <Typography>Comments</Typography>
+            {
+              items?.post?.comments?.map((comment) => (
+                <CardComment comment={comment}/>
+              ))
+            }
+          </Box>
             </Container>
         </Box>
     )

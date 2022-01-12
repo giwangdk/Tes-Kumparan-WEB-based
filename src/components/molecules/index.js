@@ -1,3 +1,4 @@
 import LoaderCatalog from './Loader'
 import CardPost from './CardPost'
-export {LoaderCatalog, CardPost}
+import CardComment from './CardComment'
+export {LoaderCatalog, CardPost, CardComment}
