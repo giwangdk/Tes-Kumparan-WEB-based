@@ -1,7 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
-import {CardAlbum} from '../../components'
-import {useDispatch, useSelector} from 'react-redux'
 import { getDataByIdAsync } from '../../utils/globalFunc';
 import Box from '@mui/material/Box'
 import CardMedia from '@mui/material/CardMedia';

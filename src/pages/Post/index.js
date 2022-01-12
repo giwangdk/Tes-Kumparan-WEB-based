@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import {Link, CardComment} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
 import { getDetailPostByid} from '../../utils/globalFunc';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Box from '@mui/material/Box'
-import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
@@ -28,7 +29,11 @@ function Post() {
 
     return (
         <Box>
-            <Container>
+        <Container>
+        <Breadcrumbs aria-label="breadcrumb">
+        
+       
+      </Breadcrumbs>
           <Box >
           <Typography gutterBottom sx={{fontWeight:'fontWeightBold'}}  variant="h1"  component="div">
             {items?.post.post?.title}

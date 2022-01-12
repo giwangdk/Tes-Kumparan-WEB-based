@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect} from 'react';
 import Box from '@mui/material/Box';
 import {Link} from '../..';
@@ -6,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import {useDispatch} from 'react-redux'
-import { useHistory } from 'react-router-dom';
 import {getPhotosByIdAsync} from '../../../utils/globalFunc'
 import { makeStyles } from '@mui/styles'
 
@@ -26,7 +26,6 @@ const useStyles = makeStyles({
 export default function CardAlbum({album, items}) {
 
     const classes = useStyles()
-    const history = useHistory()
 
     const dispatch = useDispatch()
 

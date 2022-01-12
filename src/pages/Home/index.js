@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React , {useEffect} from 'react'
 import { ListPostByUser } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';

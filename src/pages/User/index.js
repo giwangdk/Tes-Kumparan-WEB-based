@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import {CardAlbum} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
 import { getDetailUserByid } from '../../utils/globalFunc';
 import Box from '@mui/material/Box'
-import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
