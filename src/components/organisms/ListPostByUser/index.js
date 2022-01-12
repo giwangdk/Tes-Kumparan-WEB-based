@@ -13,7 +13,7 @@ const ListPostByUser = ({ user, items }) => {
             <Container>
             <Box sx={{marginTop:3, marginBottom:3}}>
                     <Badge><Typography variant="span">Post by</Typography></Badge>
-                    <Link>
+                    <Link to={`/user/${user?.id}`}>
                         <Typography variant="h3" sx={{ fontWeight: 'fontWeightBold', textDecoration:'underline' }}>{user.name}</Typography>
                     </Link>
             </Box>

@@ -52,9 +52,7 @@ export default function CardPost({user, post}) {
             flexDirection:'column'
         }}>
           
-          <Link to="">
-            <Typography variant="span" sx={{ fontWeight: 'fontWeightBold',  textDecoration:'underline' }}>post by {user.name}</Typography>
-          </Link>
+            <Typography variant="span" sx={{ fontWeight: 'fontWeightBold' }}>post by {user.name}</Typography>
           <Typography variant="h5" sx={{
             fontWeight: 'fontWeightBold'
           }}>{user.company.name}</Typography>
