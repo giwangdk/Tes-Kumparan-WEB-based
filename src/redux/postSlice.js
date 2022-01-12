@@ -17,8 +17,8 @@ const postSlice = createSlice({
             state.post = {}
             state.user = {}    
         },
-        getComments: (state, action) => {
-            state.comments = action.payload
+        getPhotos: (state, action) => {
+            state.user.photos = action.payload
         },
         getPost: (state, action) => {
                 state.post = {}
@@ -34,6 +34,6 @@ const postSlice = createSlice({
 
 
 
-export const {getPostUser, getComments, getPost, getUser} = postSlice.actions
+export const {getPostUser, getPhotos, getPost, getUser} = postSlice.actions
 
 export default postSlice.reducer

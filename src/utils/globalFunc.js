@@ -1,4 +1,4 @@
-import { getPostUser, getComments, getPost, getUser } from '../redux/postSlice';
+import { getPostUser, getPhotos, getPost, getUser } from '../redux/postSlice';
 
 import axios from 'axios'
 const API_URL = 'https://jsonplaceholder.typicode.com'
@@ -29,13 +29,11 @@ export const getDataByIdAsync = async (params) => {
     }
 }
 
-export const getPhotosByIdAsync = async (id) => {
+export const getPhotosByIdAsync =(id) => async (dispatch) => {
 
     try {
-        const photos = await axios.get(`${API_URL}/photos`)
-        const data = await photos.data.filter((photo)=>photo.albumId == id)
-        console.log("photos",data)
-        return data
+        const photos = await axios.get(`${API_URL}/photos?albumId=${id}`)
+        dispatch(getPhotos(photos.data))
     } catch (e) {
         console.log(e)
     }
@@ -69,7 +67,7 @@ export const getDetailUserByid = (id) => async (dispatch) => {
 
         const data = {
             user: user,
-            albums:albums
+            albums:albums,
         }
         console.log("details", data)
         dispatch(getUser(data))

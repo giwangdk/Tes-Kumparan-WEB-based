@@ -50,7 +50,7 @@ function User() {
             <Typography>Albums</Typography>
             {
               items?.user?.albums?.map((album) =>( 
-                <CardAlbum album={album}/>
+                <CardAlbum album={album} items={items}/>
               ))
             }
             
