@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Link from '../../atoms/Link';
+import {Link} from '../../';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 // import { useHistory } from 'react-router-dom';
@@ -11,7 +11,10 @@ import { makeStyles } from '@mui/styles'
 const useStyles = makeStyles({
     root: {
         borderRadius: 18,
-        backgroundColor:'#fff',
+    backgroundColor: '#fff',
+    '&:hover': {
+      backgroundColor: '#9BA5',
+        },
         minHeight:230
     },
   });
@@ -26,7 +29,7 @@ export default function CardPost({user, post}) {
   return (
     
     <Box className={classes.root}>
-    <Link to="">
+    <Link to={`post/${post.id}`}>
       <CardContent>
           <Typography gutterBottom sx={{fontWeight:'fontWeightBold'}}  variant="h4"  component="div">
             {post.title}
@@ -43,8 +46,12 @@ export default function CardPost({user, post}) {
             flexDirection:'column'
         }}>
           
-          <Typography variant="span" sx={{ fontWeight: 'fontWeightBold' }}>post by {user.name}</Typography>
-          <Typography variant="h5" sx={{ fontWeight: 'fontWeightBold' }}>{user.company.name}</Typography>
+          <Link to="">
+            <Typography variant="span" sx={{ fontWeight: 'fontWeightBold',  textDecoration:'underline' }}>post by {user.name}</Typography>
+          </Link>
+          <Typography variant="h5" sx={{
+            fontWeight: 'fontWeightBold'
+          }}>{user.company.name}</Typography>
         <Box>
         </Box>
       </Box>

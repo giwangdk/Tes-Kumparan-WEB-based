@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardPost } from '../../'
+import { CardPost, Link } from '../../'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
@@ -13,7 +13,9 @@ const ListPostByUser = ({ user, items }) => {
             <Container>
             <Box sx={{marginTop:3, marginBottom:3}}>
                     <Badge><Typography variant="span">Post by</Typography></Badge>
-                    <Typography variant="h3" sx={{fontWeight:'fontWeightBold'}}>{user.name}</Typography>
+                    <Link>
+                        <Typography variant="h3" sx={{ fontWeight: 'fontWeightBold', textDecoration:'underline' }}>{user.name}</Typography>
+                    </Link>
             </Box>
                 <Grid container spacing={2}>
                 {
