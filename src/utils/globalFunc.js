@@ -20,10 +20,9 @@ export const getPostUserAsync = () => async (dispatch) => {
 export const getPostByIdAsync = async (id) => {
 
     try {
-        const posts = await axios.get(`${API_URL}/posts`)
-        const data = await posts.data.filter((post)=>post.id == id)
-        console.log("posts",data)
-        return data
+        const post = await axios.get(`${API_URL}/posts/${id}`)
+        console.log("posts", post.data)
+        return post.data
     } catch (e) {
         console.log(e)
     }
@@ -42,10 +41,9 @@ export const getCommentByIdAsync = async (id) => {
 export const getUserByIdAsync = async (id) => {
 
     try {
-        const users = await axios.get(`${API_URL}/users`)
-        const data = await users.data.filter((user)=>user.id == id)
-        console.log("users",data)
-        return data
+        const user = await axios.get(`${API_URL}/users/${id}`)
+        console.log("user",user.data)
+        return user.data
     } catch (e) {
         console.log(e)
     }
@@ -78,12 +76,12 @@ export const getDetailPostByid = (id) => async (dispatch) => {
 
     try {
         const post = await getPostByIdAsync(id)
-        const user = await getUserByIdAsync(post[0].id)
-        const comments = await getCommentByIdAsync(post[0].id)
+        const user = await getUserByIdAsync(post.id)
+        const comments = await getCommentByIdAsync(post.id)
 
         const data = {
-            post: post[0],
-            user: user[0],
+            post: post,
+            user: user,
             comments:comments
         }
         console.log("users", data)
@@ -98,10 +96,10 @@ export const getDetailUserByid = (id) => async (dispatch) => {
 
     try {
         const user = await getUserByIdAsync(id)
-        const albums = await getAlbumByIdAsync(user[0].id)
+        const albums = await getAlbumByIdAsync(user.id)
 
         const data = {
-            user: user[0],
+            user: user,
             albums:albums
         }
         console.log("details", data)

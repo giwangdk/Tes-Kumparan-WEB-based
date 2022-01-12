@@ -29,11 +29,16 @@ function User() {
             <Container>
             <CardContent>
           <Typography gutterBottom sx={{fontWeight:'fontWeightBold'}}  variant="h1"  component="div">
-            {items?.user?.name}
+            {items?.user?.user?.name}
           </Typography>
           
+            <Box>
+            <Typography variant="h5" >{items?.user?.user?.email}</Typography>
+            <Typography variant="h4" >{items?.user?.user?.company?.name}</Typography>
+            <Typography variant="h3" >{items?.user?.user?.address?.street}, {items?.user?.user?.address?.city}</Typography>
         
-        <Typography variant="body1" >{items?.user?.email}</Typography>
+            </Box>
+        
         </CardContent>
           <Box sx={{
             paddingLeft:2,

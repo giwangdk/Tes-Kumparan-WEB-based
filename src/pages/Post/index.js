@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import {Link, CardComment} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
-import { getUserByIdAsync, getPostByIdAsync, getDetailPostByid } from '../../utils/globalFunc';
+import { getUserByIdAsync, getPostByIdAsync,  } from '../../utils/globalFunc';
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
@@ -19,7 +19,6 @@ function Post() {
     console.log(getPostByIdAsync(id))
     
   useEffect(() => {
-        dispatch(getDetailPostByid(id))
   }, [])
   
   
@@ -30,7 +29,7 @@ function Post() {
     return (
         <Box>
             <Container>
-          <Box>
+          <Box >
           <Typography gutterBottom sx={{fontWeight:'fontWeightBold'}}  variant="h1"  component="div">
             {items?.post.post?.title}
             </Typography>
@@ -53,11 +52,13 @@ function Post() {
       </Box>
           
         
-        <Typography variant="body1" >{items?.post?.post?.body}</Typography>
+        <Typography variant="body1" sx={{
+            backgroundColor:'#fff', padding:3, borderRadius:5, marginBottom:5
+          }}>{items?.post?.post?.body}</Typography>
           </Box>
           
           <Box>
-            <Typography>Comments</Typography>
+            <Typography variant="h3" sx={{marginBottom:2}}>Comments</Typography>
             {
               items?.post?.comments?.map((comment) => (
                 <CardComment comment={comment}/>
