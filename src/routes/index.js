@@ -10,6 +10,10 @@ const Routes = [
     path: '/post/:id',
     component: React.lazy(() => import('../pages/Post')),
     exact: true,
+  },{
+    path: '/user/:id',
+    component: React.lazy(() => import('../pages/Post')),
+    exact: true,
   },
 ];
 
