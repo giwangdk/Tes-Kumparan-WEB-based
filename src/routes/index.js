@@ -14,6 +14,10 @@ const Routes = [
     path: '/user/:id',
     component: React.lazy(() => import('../pages/User')),
     exact: true,
+  },{
+    path: '/user/photo/:id',
+    component: React.lazy(() => import('../pages/Photo')),
+    exact: true,
   },
 ];
 

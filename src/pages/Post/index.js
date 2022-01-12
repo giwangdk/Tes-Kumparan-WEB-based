@@ -60,8 +60,8 @@ function Post() {
           <Box>
             <Typography variant="h3" sx={{marginBottom:2}}>Comments</Typography>
             {
-              items?.post?.comments?.map((comment) => (
-                <CardComment comment={comment}/>
+              items?.post?.comments?.map((comment, key) => (
+                <CardComment comment={comment} key={key}/>
               ))
             }
           </Box>

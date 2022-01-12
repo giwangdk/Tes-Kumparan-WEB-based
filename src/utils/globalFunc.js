@@ -39,6 +39,8 @@ export const getPhotosByIdAsync =(id) => async (dispatch) => {
     }
 }
 
+
+
 export const getDetailPostByid = (id) => async (dispatch) => {
 
     try {

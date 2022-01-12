@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import {Link} from '../..';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import CardMedia from '@mui/material/CardMedia';
+import Grid from '@mui/material/Grid';
 import {useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import {getPhotosByIdAsync} from '../../../utils/globalFunc'
@@ -43,11 +45,18 @@ export default function CardAlbum({album, items}) {
           <Typography gutterBottom sx={{fontWeight:'fontWeightBold'}}  variant="h3"  component="div">
           {album?.title}
           </Typography>
-          <Box>
-          {items?.user?.photos?.slice(0,12)?.map((photo)=>(
-            <img src={photo.thumbnailUrl} alt="" srcset="" />
+          <Grid container spacing={3} >
+          {items?.user?.photos?.slice(0, 12)?.map((photo, key) => (
+            <Grid item lg={2} md={3} xs={4} key={key}>
+               <Link to={`photo/${album?.id}`}>
+              <CardMedia component="img"
+                
+                image={photo.thumbnailUrl}
+                alt={photo.title} />
+            </Link>
+           </Grid>
           ))}
-          </Box>
+          </Grid>
          </CardContent>
         </Box>
   );

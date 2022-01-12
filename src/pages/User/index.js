@@ -47,8 +47,8 @@ function User() {
         }}>
             <Typography>Albums</Typography>
             {
-              items?.user?.albums?.map((album) =>( 
-                <CardAlbum album={album} items={items}/>
+              items?.user?.albums?.map((album, key) =>( 
+                <CardAlbum album={album} items={items} key={key}/>
               ))
             }
             

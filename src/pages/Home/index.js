@@ -14,8 +14,8 @@ const Home = () => {
         console.log("items",items)
     return (
         <div>
-             {items?.users?.map((user) => (
-                <ListPostByUser user={user} items={items} />
+             {items?.users?.map((user, i) => (
+                 <ListPostByUser user={user} key={i} items={items} />
                     ))}
         </div>
     )

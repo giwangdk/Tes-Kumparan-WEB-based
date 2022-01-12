@@ -1,63 +1,47 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
 import {CardAlbum} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
-import { getDetailPhotoByid } from '../../utils/globalFunc';
+import { getDataByIdAsync } from '../../utils/globalFunc';
 import Box from '@mui/material/Box'
-import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 
 function Photo() {
-
+  const [data, setData] = useState(null)
     const {id} = useParams() 
     console.log("id", id)
-    const items = useSelector((state) => state.post)
-    const dispatch = useDispatch()
 
+  const getData = async () => {
+    const data = await getDataByIdAsync(`photos/${id}`)
+        setData(data) 
+  }
     
     
     useEffect(() => {
-        dispatch(getDetailPhotoByid(id))
+        getData()
     }, [])
-    console.log(items)
+  
 
-
+  console.log("photo", data)
     return (
         <Box>
             <Container>
-            <CardContent>
-          <Typography gutterBottom sx={{fontWeight:'fontWeightBold'}}  variant="h1"  component="div">
-            {items?.Photo?.Photo?.name}
-          </Typography>
-          
-            <Box>
-            <Typography variant="h5" >{items?.Photo?.Photo?.email}</Typography>
-            <Typography variant="h4" >{items?.Photo?.Photo?.company?.name}</Typography>
-            <Typography variant="h3" >{items?.Photo?.Photo?.address?.street}, {items?.Photo?.Photo?.address?.city}</Typography>
-        
-            </Box>
-        
-        </CardContent>
-          <Box sx={{
-            paddingLeft:2,
-            paddingRight: 2,
-            paddingBottom: 2,
-            display: 'flex',
-            flexDirection:'column'
-        }}>
-            <Typography>Albums</Typography>
-            {
-              items?.Photo?.albums?.map((album) =>( 
-                <CardAlbum album={album} items={items}/>
-              ))
-            }
-            
-        <Box>
-        </Box>
-      </Box>
-
+          <Box sx={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+          <Box sx={{display:'flex', flexDirection:'row', alignItems:'center'}}>
+          <CardMedia component="img"
+            sx={{ width: 200, marginBottom:2}}
+            image={data?.thumbnailUrl}
+                alt={data?.title} />
+              <CardMedia component="img"
+            sx={{ width: 200, marginBottom:2, marginLeft:2}}
+            image={data?.url}
+            alt={data?.title} />
+          </Box>
+          <Typography variant="h3">{ data?.title}</Typography>
+          </Box>
             </Container>
         </Box>
     )
