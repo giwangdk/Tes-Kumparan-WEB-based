@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import {Link, CardComment} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
-import { getUserByIdAsync, getPostByIdAsync,  } from '../../utils/globalFunc';
+import { getDetailPostByid} from '../../utils/globalFunc';
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
@@ -16,9 +16,9 @@ function Post() {
     const items = useSelector((state) => state.post)
     const dispatch = useDispatch()
 
-    console.log(getPostByIdAsync(id))
     
   useEffect(() => {
+        dispatch(getDetailPostByid(id))
   }, [])
   
   

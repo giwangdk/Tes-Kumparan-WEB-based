@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom';
-import {Link} from '../../components'
+import {CardAlbum} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
 import { getDetailUserByid } from '../../utils/globalFunc';
 import Box from '@mui/material/Box'
@@ -47,14 +47,13 @@ function User() {
             display: 'flex',
             flexDirection:'column'
         }}>
-          
-                    <Link to="">
-                        post by
-            <Typography variant="h3" sx={{ fontWeight: 'fontWeightBold',  textDecoration:'underline' }}>{items?.user?.name}</Typography>
-          </Link>
-          <Typography variant="h5" sx={{
-            fontWeight: 'fontWeightBold'
-          }}>{items?.user?.company?.name}</Typography>
+            <Typography>Albums</Typography>
+            {
+              items?.user?.albums?.map((album) =>( 
+                <CardAlbum album={album}/>
+              ))
+            }
+            
         <Box>
         </Box>
       </Box>

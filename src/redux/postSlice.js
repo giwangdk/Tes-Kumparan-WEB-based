@@ -21,6 +21,7 @@ const postSlice = createSlice({
             state.comments = action.payload
         },
         getPost: (state, action) => {
+                state.post = {}
                 state.post =  action.payload
                 state.user = {}
         },

@@ -17,44 +17,13 @@ export const getPostUserAsync = () => async (dispatch) => {
     }
 }
 
-export const getPostByIdAsync = async (id) => {
+
+export const getDataByIdAsync = async (params) => {
 
     try {
-        const post = await axios.get(`${API_URL}/posts/${id}`)
-        console.log("posts", post.data)
-        return post.data
-    } catch (e) {
-        console.log(e)
-    }
-}
-export const getCommentByIdAsync = async (id) => {
-
-    try {
-        const comments = await axios.get(`${API_URL}/comments`)
-        const data = await comments.data.filter((comment)=>comment.postId == id)
-        console.log("comments", data)
-        return data
-    } catch (e) {
-        console.log(e)
-    }
-}
-export const getUserByIdAsync = async (id) => {
-
-    try {
-        const user = await axios.get(`${API_URL}/users/${id}`)
-        console.log("user",user.data)
-        return user.data
-    } catch (e) {
-        console.log(e)
-    }
-}
-export const getAlbumByIdAsync = async (id) => {
-
-    try {
-        const albums = await axios.get(`${API_URL}/albums`)
-        const data = await albums.data.filter((album)=>album.userId == id)
-        console.log("albums",data)
-        return data
+        const results = await axios.get(`${API_URL}/${params}`)
+        console.log("photos",results.data)
+        return results.data
     } catch (e) {
         console.log(e)
     }
@@ -75,9 +44,9 @@ export const getPhotosByIdAsync = async (id) => {
 export const getDetailPostByid = (id) => async (dispatch) => {
 
     try {
-        const post = await getPostByIdAsync(id)
-        const user = await getUserByIdAsync(post.id)
-        const comments = await getCommentByIdAsync(post.id)
+        const post = await getDataByIdAsync(`posts/${id}`)
+        const user = await getDataByIdAsync(`users/${id}`)
+        const comments = await getDataByIdAsync(`comments?postId=${id}`)
 
         const data = {
             post: post,
@@ -95,8 +64,8 @@ export const getDetailPostByid = (id) => async (dispatch) => {
 export const getDetailUserByid = (id) => async (dispatch) => {
 
     try {
-        const user = await getUserByIdAsync(id)
-        const albums = await getAlbumByIdAsync(user.id)
+        const user = await getDataByIdAsync(`users/${id}`)
+        const albums = await getDataByIdAsync(`albums?userId=${id}`)
 
         const data = {
             user: user,
