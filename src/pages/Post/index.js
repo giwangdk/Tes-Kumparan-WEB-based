@@ -35,7 +35,7 @@ function Post() {
           </Typography>
           
         
-        <Typography variant="body1" sx={{maxHeight:'50px', minHeight:'50px', overflow:'hidden'}} >{items?.post?.body}</Typography>
+        <Typography variant="body1" >{items?.post?.body}</Typography>
         </CardContent>
           <Box sx={{
             paddingLeft:2,

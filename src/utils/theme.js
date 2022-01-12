@@ -35,6 +35,10 @@ export const theme = createTheme({
         fontSize: 16,
         color: '#394867',
       },
+      body1 : {
+        fontSize: 20,
+        color:'#394867',
+      },
       body2 : {
         fontSize: 13,
         color:'#394867',
