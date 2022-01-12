@@ -2,29 +2,26 @@ import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import {Link} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
-import { getUserByIdAsync, getPostByIdAsync, getDetailPostByid } from '../../redux/postSlice';
+import { getUserByIdAsync } from '../../redux/postSlice';
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 
-function Post() {
+function User() {
 
     const {id} = useParams() 
     console.log("id", id)
     const items = useSelector((state) => state.post)
     const dispatch = useDispatch()
 
-    console.log(getPostByIdAsync(id))
     
-  useEffect(() => {
-        dispatch(getDetailPostByid(id))
-  }, [])
-  
-  
-      
-  console.log(items)
+    
+    useEffect(() => {
+        dispatch(getUserByIdAsync(id))
+    }, [])
+    console.log(items)
 
 
     return (
@@ -32,11 +29,11 @@ function Post() {
             <Container>
             <CardContent>
           <Typography gutterBottom sx={{fontWeight:'fontWeightBold'}}  variant="h1"  component="div">
-            {items?.post.post?.title}
+            {items?.user?.name}
           </Typography>
           
         
-        <Typography variant="body1" >{items?.post.post?.body}</Typography>
+        <Typography variant="body1" >{items?.user?.email}</Typography>
         </CardContent>
           <Box sx={{
             paddingLeft:2,
@@ -46,13 +43,15 @@ function Post() {
             flexDirection:'column'
         }}>
           
-          <Link to={`/detail/${items.user.id}`}>
+                    <Link to="">
                         post by
-            <Typography variant="h3" sx={{ fontWeight: 'fontWeightBold',  textDecoration:'underline' }}>{items?.post.user?.name}</Typography>
+            <Typography variant="h3" sx={{ fontWeight: 'fontWeightBold',  textDecoration:'underline' }}>{items?.user?.name}</Typography>
           </Link>
           <Typography variant="h5" sx={{
             fontWeight: 'fontWeightBold'
-          }}>{items?.post.user?.company?.name}</Typography>
+          }}>{items?.user?.company?.name}</Typography>
+        <Box>
+        </Box>
       </Box>
 
             </Container>
@@ -60,4 +59,4 @@ function Post() {
     )
 }
 
-export default Post
+export default User
