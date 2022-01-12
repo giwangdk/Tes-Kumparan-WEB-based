@@ -2,14 +2,14 @@ import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import {CardAlbum} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
-import { getDetailUserByid } from '../../utils/globalFunc';
+import { getDetailPhotoByid } from '../../utils/globalFunc';
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 
-function User() {
+function Photo() {
 
     const {id} = useParams() 
     console.log("id", id)
@@ -19,7 +19,7 @@ function User() {
     
     
     useEffect(() => {
-        dispatch(getDetailUserByid(id))
+        dispatch(getDetailPhotoByid(id))
     }, [])
     console.log(items)
 
@@ -27,27 +27,29 @@ function User() {
     return (
         <Box>
             <Container>
-            <Box>
+            <CardContent>
           <Typography gutterBottom sx={{fontWeight:'fontWeightBold'}}  variant="h1"  component="div">
-            {items?.user?.user?.name}
+            {items?.Photo?.Photo?.name}
           </Typography>
           
             <Box>
-            <Typography variant="h5" >{items?.user?.user?.email}</Typography>
-            <Typography variant="h4" >{items?.user?.user?.company?.name}</Typography>
-            <Typography variant="h3" >{items?.user?.user?.address?.street}, {items?.user?.user?.address?.city}</Typography>
+            <Typography variant="h5" >{items?.Photo?.Photo?.email}</Typography>
+            <Typography variant="h4" >{items?.Photo?.Photo?.company?.name}</Typography>
+            <Typography variant="h3" >{items?.Photo?.Photo?.address?.street}, {items?.Photo?.Photo?.address?.city}</Typography>
         
             </Box>
         
-        </Box>
+        </CardContent>
           <Box sx={{
-            marginTop:5,
+            paddingLeft:2,
+            paddingRight: 2,
+            paddingBottom: 2,
             display: 'flex',
             flexDirection:'column'
         }}>
             <Typography>Albums</Typography>
             {
-              items?.user?.albums?.map((album) =>( 
+              items?.Photo?.albums?.map((album) =>( 
                 <CardAlbum album={album} items={items}/>
               ))
             }
@@ -61,4 +63,4 @@ function User() {
     )
 }
 
-export default User
+export default Photo
