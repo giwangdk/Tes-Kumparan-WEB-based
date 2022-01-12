@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import {Link} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
-import { getUserByIdAsync } from '../../redux/postSlice';
+import { getDetailUserByid } from '../../utils/globalFunc';
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
@@ -19,7 +19,7 @@ function User() {
     
     
     useEffect(() => {
-        dispatch(getUserByIdAsync(id))
+        dispatch(getDetailUserByid(id))
     }, [])
     console.log(items)
 

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import {Link} from '../../components'
 import {useDispatch, useSelector} from 'react-redux'
-import { getUserByIdAsync, getPostByIdAsync, getDetailPostByid } from '../../redux/postSlice';
+import { getUserByIdAsync, getPostByIdAsync, getDetailPostByid } from '../../utils/globalFunc';
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
@@ -46,7 +46,7 @@ function Post() {
             flexDirection:'column'
         }}>
           
-          <Link to={`/detail/${items.user.id}`}>
+          <Link to={`/user/${items.post.user.id}`}>
                         post by
             <Typography variant="h3" sx={{ fontWeight: 'fontWeightBold',  textDecoration:'underline' }}>{items?.post.user?.name}</Typography>
           </Link>

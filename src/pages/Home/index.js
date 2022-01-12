@@ -1,7 +1,7 @@
 import React , {useEffect} from 'react'
 import { ListPostByUser } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostUserAsync } from '../../redux/postSlice';
+import { getPostUserAsync } from '../../utils/globalFunc';
 const Home = () => {
 
     const items = useSelector((state) => state.post.posts)
